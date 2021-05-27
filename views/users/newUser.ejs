@@ -5,14 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="../css/newUser.css">
+
 </head>
 <body>
-    <h1>New User</h1>
-    <form action="/user" method="POST" style="text-align: center;">
-        <label for="name">Enter your name: </label>
+    <h1 class="title">New User</h1>
+    <form action="/user" method="POST" style="text-align: center;" class="signup-form">
+        <label for="name">Enter your name</label>
         <input type="text" id="name" placeholder="Name" name="name">
         <br>
-        <label for="age">Enter your age: </label>
+        <label for="age">Enter your age</label>
         <input type="text" id="age" placeholder="Age" name="age">
         <br>
         <label for="email">Enter your email address</label>
@@ -21,8 +25,8 @@
         <label for="interests"></label>
         <textarea name="interests" id="interests" cols="30" rows="10" placeholder="What interests you to write about"></textarea>
         <br>
-        <button>Submit</button>
-        <button><a href="/">Back to home page</a></button>
+        <button class="btn">Submit</button>
+        <button class="btn wide"><a href="/">Back to home page</a></button>
     </form>
 </body>
 </html>
