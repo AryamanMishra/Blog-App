@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    text-transform: capitalize;
+    font-family: 'Mukta', sans-serif;
+    color: #58A6FF;
+}
+body {
+    background-color: #0d1117;
+}
+.section-center {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.section-center h1 {
+    font-size: 1.6rem;
+}
+.section-center h1:hover {
+    color: white;
+    transition: all 1s ease-in;
+}
+.section-center h2 {
+    margin-top: 0.4rem;
+    cursor: pointer;
+    background-color: #238636;
+    border: 2px solid white;
+    padding: 0.35rem;
+    width: 200px;
+}
+.section-center h2 a {
+    color: white;
+    text-decoration: none;
+}
+.section-center h2:hover {
+    border-color: #238636;
+    transition: all 1s ease-in;
+    background-color: white;
+}
+.section-center h2:hover a {
+    color: black;
+}
