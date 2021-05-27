@@ -3,10 +3,10 @@ const app = express()
 const path = require('path')
 const methodOverride = require('method-override')
 
-
 const User = require('./models/user');
 
 const mongoose = require('mongoose');
+const alert = require('alert');
 mongoose.connect('mongodb://localhost:27017/BlogApp', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log('CONNECTION CONFIRMED')
@@ -28,6 +28,27 @@ app.get('/', (req,res) => {
 })
 
 
+
+app.get('/users/existing', (req,res) => {
+    res.render('users/existing')
+})
+
+app.post('/existing', (req,res) => {
+    let userTocheck = req.body
+    const findUser = User.findOne({name:userTocheck.name,age:parseInt(userTocheck.age),email:userTocheck.email})
+        .then((data) => {
+            alert(`Welcome ${data.name}`)
+            res.redirect(`/users/${data._id}`)
+            console.log('success')
+            console.log(data)
+        })
+        .catch (err => {
+            alert('User by these credentials does not exist, please sign up')
+            res.redirect('/')
+            //console.log(err)
+            //console.log('fail')
+        })
+})
 
 app.get('/users/new', (req,res) => {
     res.render('users/newUser')

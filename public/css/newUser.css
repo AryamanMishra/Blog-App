@@ -31,24 +31,26 @@ body {
     padding-bottom: 2rem;
 }
 input {
-    color: black;
-    font-size: 0.9rem;
+    color: white;
+    font-size: 1.2rem;
     width: 80%;
+    background-color: black;
 }
 textarea {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: black;
     width: 80%;
+    background-color: black;
 }
 label {
     font-size: 1.1rem;
     color: white;
 }
 input::placeholder {
-    color: rgb(37, 35, 35);
+    color: white;
 }
 textarea::placeholder {
-    color: rgb(37, 35, 35);;
+    color: white;
 }
 .btn {
     background-color: #238636;
