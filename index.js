@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost:27017/BlogApp', {useNewUrlParser: true, us
     console.log(err)
 })
 
-
+app.use(express.static(__dirname + '/public'));
 app.set('views',path.join(__dirname,'views'))
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended:true}))
@@ -48,7 +48,7 @@ app.get('/users/:id', async(req,res) => {
     try {
         const {id} = req.params
         const user = await User.findById(id)
-        //console.log(user)
+        console.log(user)
         res.render('users/userDetails', {user})
     }
     catch {
