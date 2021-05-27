@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema({
         required:true
     },
     interests: {
-        type:String
+        type:String,
+        required:true
     }
 })
 
