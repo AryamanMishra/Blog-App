@@ -4,7 +4,7 @@
     margin: 0;
     text-transform: capitalize;
     font-family: 'Mukta', sans-serif;
-    text-transform: capitalize;
+    text-transform: none
 }
 body {
     background-color: #0d1117;

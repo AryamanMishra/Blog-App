@@ -35,10 +35,11 @@ input {
     font-size: 1.2rem;
     width: 80%;
     background-color: black;
+    text-transform: none;
 }
 textarea {
     font-size: 1.2rem;
-    color: black;
+    color: white;
     width: 80%;
     background-color: black;
 }

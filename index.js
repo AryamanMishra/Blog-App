@@ -3,7 +3,9 @@ const app = express()
 const path = require('path')
 const methodOverride = require('method-override')
 
+
 const User = require('./models/user');
+const Blog = require('./models/blog');
 
 const mongoose = require('mongoose');
 const alert = require('alert');
@@ -37,8 +39,8 @@ app.post('/existing', (req,res) => {
     let userTocheck = req.body
     const findUser = User.findOne({name:userTocheck.name,age:parseInt(userTocheck.age),email:userTocheck.email})
         .then((data) => {
-            alert(`Welcome ${data.name}`)
-            res.redirect(`/users/${data._id}`)
+            //alert(`Signed in successfully`)
+            res.redirect(`/users/${data._id}/home`)
             console.log('success')
             console.log(data)
         })
@@ -62,7 +64,7 @@ app.post('/user', (req,res) => {
     .catch(err => {
         console.log('error')
     })
-    res.redirect(`/users/${newUser._id}`)
+    res.redirect(`/users/${newUser._id}/home`)
 })
 
 app.get('/users/:id', async(req,res) => {
@@ -77,8 +79,54 @@ app.get('/users/:id', async(req,res) => {
     }
 })
 
+
+app.get('/users/:id/home', async(req,res) => {
+    try {
+        const { id } = req.params
+        const user = await User.findById(id)
+        res.render('users/userHome', {user})
+    }
+    catch {
+        res.render('users/userDetailserror')
+    }
+}) 
+
+app.get('/users/:id/home/My-Blogs', async(req,res) => {
+    try {
+        const {id} = req.params
+        const user = await User.findById(id)
+        const blogs = await Blog.find({user_id:id})
+        console.log(blogs)
+        res.render('users/myBlogs',{user,blogs})
+    }
+    catch {
+        console.log('error')
+    }
+})
+
+app.get('/users/:id/home/new', (req,res) => {
+    const {id} = req.params
+    res.render('newBlog', {id})
+})
+
+
+
+app.post('/users/:id/home', (req,res) => {
+    const newBlog = new Blog(req.body)
+    console.log(req.body)
+    newBlog.save().then(() => {
+        console.log('saved')
+        res.redirect(`/users/${req.body.user_id}/home/My-Blogs`)
+        alert('Blog Saved')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
+
 app.get('*', (req,res) => {
-    res.send('The website is still in progrees so hold down!!');
+    res.send('The website is still in progrees so hold up!!');
 })
 
 

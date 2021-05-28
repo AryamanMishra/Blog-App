@@ -1,0 +1,5 @@
+new - css in myBlogs.ejs,userHome.ejs,newBlog.ejs
+text-transform:none everywhere
+try to add a better way to list blogs in myBlogs.ejs(presently set to ul,li)
+leave everything else as it
+Thank You!!!!!!!!!!!!!!!!!!!!!!
