@@ -17,5 +17,17 @@
         <p>Interests: <%= user.interests %></p>
     </section>
     <button class="btn"><a href="/users/<%= user._id%>/home">Back to home page</a></button>
+    <br>
+    <button class="btn-edit"><a href="/users/<%= user._id%>/profile/edit">Edit your Profile</a></button>
+    <br>
+    <form action="/delete?_method=DELETE" method="POST">
+        <button class="btn-delete" onclick="ask()">Delete your Profile</button>
+        <input type="hidden" value="<%=user._id%>" id="id" name="_id">
+    </form>
+    <script>
+        function ask() {
+            alert('Are you sure you want to delete your profile \nThis cannot be undone')
+        }
+    </script>
 </body>
 </html>

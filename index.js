@@ -27,6 +27,7 @@ const mongoose = require('mongoose');
 const alert = require('alert');
 
 
+
 /* Connecting mongoose to mongodb */
 mongoose.connect('mongodb://localhost:27017/BlogApp', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
@@ -201,11 +202,45 @@ app.post('/users/:id/home', (req,res) => {
 })
 
 
+
+app.get('/users/:id/profile/edit', async(req, res) => {
+    try {
+        const {id} = req.params
+        const user = await User.findById(id)
+        res.render('users/editDetails', {user})
+        console.log('Profile updated')
+    }
+    catch{
+        console.log('error')
+    }
+})
+
+
+app.put('/edit', async(req,res) => {
+    try {
+        const id = req.body._id
+        //console.log(id)
+        const user = await User.findByIdAndUpdate(id,req.body,{runValidators:true,new:true});
+        console.log(req.body)
+        res.redirect(`/users/${id}/profile`)
+    }
+    catch{
+        console.log('error')
+    }
+})
+
+app.delete('/delete', async(req,res) => {
+    const id = req.body._id
+    const user = await User.findByIdAndDelete(id)
+    res.redirect('/')
+})
+
+
+
 /* Get request for any other route requested by user */
 app.get('*', (req,res) => {
     res.send('The website is still in progrees so hold up!!');
 })
-
 
 
 
