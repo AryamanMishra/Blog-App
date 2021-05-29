@@ -55,16 +55,34 @@ app.post('/existing', (req,res) => {
 app.get('/users/new', (req,res) => {
     res.render('users/newUser')
 })
-app.post('/user', (req,res) => {
-    const newUser = new User(req.body)
-    newUser.save().then(() => {
-        console.log('User logged in')
-        console.log(req.body)
-    })
-    .catch(err => {
-        console.log('error')
-    })
-    res.redirect(`/users/${newUser._id}/home`)
+app.post('/user', async(req,res) => {
+    try {
+        const newUser = new User(req.body)
+        const check = await User.find({name:newUser.name, age:newUser.age, email:newUser.email, password:newUser.password})
+        // console.log(newUser)
+        // console.log('b/w')
+        // console.log(check)
+        if (JSON.stringify(check) !== '[]') {
+            alert(`Account exists \nLogged in as ${check[0].name}`)
+            console.log('same user')
+            res.redirect(`/users/${check[0]._id}/home`)
+        }
+        else {
+            newUser.save().then(() => {
+                alert(`New Account created for ${newUser.name}`)
+                console.log('new user logged in')
+            })
+            .catch(err => {
+                console.log('error')
+                console.log(err)
+            })
+            res.redirect(`/users/${newUser._id}/home`)
+        }
+    }
+    catch {
+        console.log('Sign Up error!!!!')
+        res.redirect('/users/userDetailserror')
+    }
 })
 
 app.get('/users/:id', async(req,res) => {
