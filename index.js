@@ -142,7 +142,7 @@ app.get('/users/:id/profile', async(req,res) => {
     try {
         const {id} = req.params
         const user = await User.findById(id)
-        //console.log(user)
+        //console.log(user) 
         res.render('users/userDetails', {user}) // To show user details
     }
     catch {
