@@ -17,7 +17,7 @@ body {
     text-decoration: underline;
     font-weight: bold;
 }
-.signup-form {
+.login-form {
     width: 500px;
     position: absolute;
     top: 15%;
@@ -78,7 +78,7 @@ textarea::placeholder {
     transition: all 1s ease-in;
 }
 @media screen and (max-width: 600px) {
-    .signup-form {
+    .login-form {
         width: 300px;
     }
     input {

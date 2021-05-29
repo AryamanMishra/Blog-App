@@ -5,21 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My-Blogs</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="../../public/css/myBlogs.css">
 </head>
 <body>
-    <h1><%= user.name %>'s Blogs </h1>
-    <ul>
-        <% for (let blog of blogs) { %> 
-            <li><%= blog.title %> </li>
-            <li><%= blog.tags %> </li>
-            <li><%= blog.content %> </li>
-            <br>
-            <br>
-            <br>
-        <% } %> 
-    </ul>
-    <button><a href="/">To login page</a></button>
-    <br>
-    <button><a href="/users/<%= user._id %>/home">To home page</a> </button>
+    <div class="section-center">
+        <h1><%= user.name %>'s Blogs </h1>
+        <ul>
+            <% for (let blog of blogs) { %> 
+                <li><%= blog.title %> </li>
+                <li><%= blog.tags %> </li>
+                <li><%= blog.content %> </li>
+                <br>
+                <br>
+                <br>
+            <% } %> 
+        </ul>
+        <button class="btn"><a href="/">To login page</a></button>
+        <br>
+        <button class="btn"><a href="/users/<%= user._id %>/home">To home page</a> </button>
+    </div>
 </body>
 </html>
