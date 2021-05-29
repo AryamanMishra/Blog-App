@@ -2,45 +2,41 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    text-transform: capitalize;
     font-family: 'Mukta', sans-serif;
-    text-transform: none
+    color: #58A6FF;
 }
 body {
     background-color: #0d1117;
 }
-.title {
-    color: #58A6FF;
-    text-align: center;
-    padding-top: 2rem;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
 .section-center {
     position: absolute;
-    top: 35%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%,-50%);
-}
-p {
-    color: white;
     text-align: center;
-    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.section-center h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.section-center h1:hover {
+    color: white;
+    transition: all 1s ease-in;
 }
 .btn {
     background-color: #238636;
     color: white;
     border: 2px solid white;
     font-size: 1.15rem;
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
     width: 200px;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%,-50%);
 }
 .btn a {
     color: white;
@@ -55,4 +51,16 @@ p {
 .btn:hover a {
     color: black;
     transition: all 1s ease-in;
+}
+
+@media screen and (max-width: 600px) {
+    .section-center {
+        width: 90%;
+    }
+    .section-center h1 {
+        font-size: 1.5rem;
+    }
+    .btn {
+        width: 160px;
+    }
 }
