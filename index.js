@@ -137,8 +137,8 @@ app.post('/user', async(req,res) => {
 })
 
 
-/* Showing user details page */
-app.get('/users/:id', async(req,res) => {
+/* Showing user profile page */
+app.get('/users/:id/profile', async(req,res) => {
     try {
         const {id} = req.params
         const user = await User.findById(id)
