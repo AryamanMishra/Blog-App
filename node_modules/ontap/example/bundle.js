@@ -56,8 +56,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var hasTouch = __webpack_require__(2)
-	var tap = __webpack_require__(3)
-	var event = __webpack_require__(4)
+	var event = __webpack_require__(3)
+	var tap = __webpack_require__(4)
 	
 	function now() {
 	  return (new Date()).getTime()
@@ -66,23 +66,46 @@
 	
 	module.exports = function (el, handler) {
 	  if (hasTouch) {
-	    event.bind(el, 'click', function (e) {
-	      e.preventDefault()
-	      if (now() - ms > 300) {
-	        handler.call(this, e)
-	      }
-	    })
-	    event.bind(el, 'touchstart', tap(function (e) {
-	      ms = now()
-	      handler.call(this, e)
-	    }))
+	    return BindTouch(el, handler)
 	  } else {
-	    event.bind(el, 'click', function (e) {
-	      e.preventDefault()
-	      handler.call(this, e)
-	    })
+	    return BindDesktop(el, handler)
 	  }
 	}
+	
+	function BindTouch(el, handler) {
+	  var clickHandler = function (e) {
+	    e.preventDefault()
+	    if (now() - ms > 300) {
+	      handler.call(this, e)
+	    }
+	  }
+	  var tapHandler = tap(function (e) {
+	    ms = now()
+	    handler.call(this, e)
+	  })
+	  event.bind(el, 'click', clickHandler)
+	  event.bind(el, 'touchstart', tapHandler)
+	  return {
+	    unbind: function () {
+	      event.unbind(el, 'click', clickHandler)
+	      event.unbind(el, 'touchstart', tapHandler)
+	    }
+	  }
+	}
+	
+	function BindDesktop(el, handler) {
+	  var clickHandler = function (e) {
+	    e.preventDefault()
+	    handler.call(this, e)
+	  }
+	  event.bind(el, 'click', clickHandler)
+	  return {
+	    unbind: function () {
+	      event.unbind(el, 'click', clickHandler)
+	    }
+	  }
+	}
+	
 
 
 /***/ },
@@ -94,6 +117,46 @@
 
 /***/ },
 /* 3 */
+/***/ function(module, exports) {
+
+	var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
+	    unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
+	    prefix = bind !== 'addEventListener' ? 'on' : '';
+	
+	/**
+	 * Bind `el` event `type` to `fn`.
+	 *
+	 * @param {Element} el
+	 * @param {String} type
+	 * @param {Function} fn
+	 * @param {Boolean} capture
+	 * @return {Function}
+	 * @api public
+	 */
+	
+	exports.bind = function(el, type, fn, capture){
+	  el[bind](prefix + type, fn, capture || false);
+	  return fn;
+	};
+	
+	/**
+	 * Unbind `el` event `type`'s callback `fn`.
+	 *
+	 * @param {Element} el
+	 * @param {String} type
+	 * @param {Function} fn
+	 * @param {Boolean} capture
+	 * @return {Function}
+	 * @api public
+	 */
+	
+	exports.unbind = function(el, type, fn, capture){
+	  el[unbind](prefix + type, fn, capture || false);
+	  return fn;
+	};
+
+/***/ },
+/* 4 */
 /***/ function(module, exports) {
 
 	var endEvents = [
@@ -184,46 +247,6 @@
 	  }
 	}
 
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
-	    unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
-	    prefix = bind !== 'addEventListener' ? 'on' : '';
-	
-	/**
-	 * Bind `el` event `type` to `fn`.
-	 *
-	 * @param {Element} el
-	 * @param {String} type
-	 * @param {Function} fn
-	 * @param {Boolean} capture
-	 * @return {Function}
-	 * @api public
-	 */
-	
-	exports.bind = function(el, type, fn, capture){
-	  el[bind](prefix + type, fn, capture || false);
-	  return fn;
-	};
-	
-	/**
-	 * Unbind `el` event `type`'s callback `fn`.
-	 *
-	 * @param {Element} el
-	 * @param {String} type
-	 * @param {Function} fn
-	 * @param {Boolean} capture
-	 * @return {Function}
-	 * @api public
-	 */
-	
-	exports.unbind = function(el, type, fn, capture){
-	  el[unbind](prefix + type, fn, capture || false);
-	  return fn;
-	};
 
 /***/ }
 /******/ ]);

@@ -23,6 +23,7 @@ const Blog = require('./models/blog');
 /* Required mongoose module */
 const mongoose = require('mongoose');
 
+
 /* Required alert module */
 const alert = require('alert');
 
@@ -121,7 +122,6 @@ app.post('/user', async(req,res) => {
         /* Creating new account and saving to DB */
         else {
             newUser.save().then(() => {
-                alert(`New Account created for ${newUser.name}`)
                 console.log('new user logged in')
             })
             .catch(err => {
@@ -234,7 +234,6 @@ app.delete('/delete', async(req,res) => {
     const user = await User.findByIdAndDelete(id)
     res.redirect('/')
 })
-
 
 
 /* Get request for any other route requested by user */
