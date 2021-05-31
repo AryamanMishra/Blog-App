@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <h1>Search results for username <%= name_and_id[0] %></h1> 
+    <ul>
+        <% for (let i=0;i<validUsers.length;i++) {%>
+            <% if (name_and_id[1] == validUsers[i]._id) { %> 
+                <li><a href="/users/<%= validUsers[i]._id%>/profile"><%= validUsers[i].name %>(You)</a></li> 
+            <% } else { %> 
+                <li><a href="/users/<%= validUsers[i]._id%>/showProfile"><%= validUsers[i].name %> </a></li> 
+            <% } %> 
+        <% } %> 
+    </ul>
+
+</body>
+</html>

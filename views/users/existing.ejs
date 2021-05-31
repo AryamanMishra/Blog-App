@@ -23,8 +23,13 @@
         <label for="email">Enter your password: </label>
         <input type="password" id="password" placeholder="Your Password" name="password">
         <br>
-        <button class="btn">Submit</button>
+        <button class="btn" onclick="welcome()">Submit</button>
         <button class="btn wide"><a href="/">Back to home page</a></button>
     </form>
+    <script>
+        function welcome() {
+            alert('Signed in successfully')
+        }
+    </script>
 </body>
 </html>

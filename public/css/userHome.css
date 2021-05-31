@@ -53,3 +53,13 @@ a {
         width: 170px;
     }
 }
+#name {
+    background-color: black;
+    color: white;
+    width: 45em;
+    margin-top: 1.5em;
+}
+#searchButton {
+    background-color: black;
+    color: white;
+}

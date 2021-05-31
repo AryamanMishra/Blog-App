@@ -26,7 +26,7 @@ const mongoose = require('mongoose');
 
 /* Required alert module */
 const alert = require('alert');
-
+const bodyParser = require('body-parser') 
 
 
 /* Connecting mongoose to mongodb */
@@ -49,11 +49,18 @@ app.set('views',path.join(__dirname,'views'))
 /* Setting view engine to ejs used for dynamic templating */
 app.set('view engine','ejs')
 
+
+app.use(express.json());
+
 /* Use method of express to convert the req object to readable form */
 app.use(express.urlencoded({extended:true}))
 
 /* Use method of express to invoke methodOverride with key name '_method' */
 app.use(methodOverride('_method'))
+
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 
 
 /*
@@ -152,6 +159,19 @@ app.get('/users/:id/profile', async(req,res) => {
 })
 
 
+app.get('/users/:id/showProfile', async(req,res) => {
+    try {
+        const {id} = req.params
+        const user = await User.findById(id)
+        //console.log(user) 
+        res.render('users/showUserDetails', {user}) // To show user details
+    }
+    catch {
+        res.render('users/userDetailserror')
+    }
+})
+
+
 /* User home page */
 app.get('/users/:id/home', async(req,res) => {
     try {
@@ -178,6 +198,9 @@ app.get('/users/:id/home/My-Blogs', async(req,res) => {
         console.log('error')
     }
 })
+
+
+
 
 
 /* Functionality to create new blog */
@@ -235,6 +258,24 @@ app.delete('/delete', async(req,res) => {
     res.redirect('/')
 })
 
+
+app.post('/users/searchUser', async(req,res) => {
+    const validUsers = []
+    const name_and_id = []
+    const searchName = req.body.name
+    const users = await User.find({name:searchName})
+    if (JSON.stringify(users) !== '[]') {
+        for (let i=0;i<users.length;i++) {
+            validUsers.push(users[i])
+        }
+        name_and_id.push(searchName)
+        name_and_id.push(req.body.id)
+        res.render('showUsers',{validUsers, name_and_id})
+    }
+    else {
+        res.render('users/userDetailserror')
+    }
+})
 
 /* Get request for any other route requested by user */
 app.get('*', (req,res) => {
