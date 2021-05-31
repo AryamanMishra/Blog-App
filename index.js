@@ -26,7 +26,8 @@ const mongoose = require('mongoose');
 
 /* Required alert module */
 const alert = require('alert');
-const bodyParser = require('body-parser') 
+const bodyParser = require('body-parser'); 
+const { text } = require('body-parser');
 
 
 /* Connecting mongoose to mongodb */
@@ -259,16 +260,37 @@ app.delete('/delete', async(req,res) => {
 })
 
 
+function textModify(text) {
+    let ans = ''
+    let c = text.slice(0,1)
+    c = c.toUpperCase()
+    ans += c + text.slice(1)
+    if (text.indexOf('') !== -1) {
+        let ind = text.indexOf(' ') + 1
+        let chr = text.substring(ind,ind+1)
+        chr = chr.toUpperCase()
+        let str = ans.slice(ind+1)
+        chr += str;
+        ans = ans.substring(0,ind) + chr
+    }
+    return ans 
+}
+
+
+
+
 app.post('/users/searchUser', async(req,res) => {
     const validUsers = []
     const name_and_id = []
-    const searchName = req.body.name
+    let searchName = req.body.name
+    let temp = searchName
+    searchName = textModify(searchName)
     const users = await User.find({name:searchName})
     if (JSON.stringify(users) !== '[]') {
         for (let i=0;i<users.length;i++) {
             validUsers.push(users[i])
         }
-        name_and_id.push(searchName)
+        name_and_id.push(temp)
         name_and_id.push(req.body.id)
         res.render('showUsers',{validUsers, name_and_id})
     }

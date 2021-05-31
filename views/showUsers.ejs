@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/showUsers.css">
 </head>
 <body> 
-    <h1>Search results for username <%= name_and_id[0] %></h1> 
+    <h1><u>Search results for username: <%= name_and_id[0] %></u></h1> 
+    <section class="section-center">
     <ul>
         <% for (let i=0;i<validUsers.length;i++) {%>
             <% if (name_and_id[1] == validUsers[i]._id) { %> 
@@ -17,6 +19,7 @@
             <% } %> 
         <% } %> 
     </ul>
+    </section>
 
 </body>
 </html>
