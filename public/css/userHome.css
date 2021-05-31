@@ -63,3 +63,45 @@ a {
     background-color: black;
     color: white;
 }
+
+.dropbtn {
+    background-color:#238636;
+    color: white;
+    padding: 16px;
+    font-size: 1.2rem;
+    border: 2px solid white;
+    cursor: pointer;
+    width: 10.4em;
+    border-top: 4em;
+  }
+  
+.dropdown {
+    position: relative;
+    height: 0.5em;
+    margin-top: 0.4rem;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 12.5em;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+  
+.dropdown-content a:hover {background-color:greenyellow}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}

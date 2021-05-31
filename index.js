@@ -232,7 +232,7 @@ app.get('/users/:id/profile/edit', async(req, res) => {
         const {id} = req.params
         const user = await User.findById(id)
         res.render('users/editDetails', {user})
-        console.log('Profile updated')
+        //console.log('Profile updated')
     }
     catch{
         console.log('error')
@@ -298,6 +298,10 @@ app.post('/users/searchUser', async(req,res) => {
         res.render('users/userDetailserror')
     }
 })
+
+
+
+
 
 /* Get request for any other route requested by user */
 app.get('*', (req,res) => {

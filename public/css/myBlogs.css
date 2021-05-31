@@ -13,19 +13,19 @@ body {
     top: 30%;
     left: 50%;
     transform: translate(-50%,-50%);
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
 }
-.section-center h1 {
+.section-left h1 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
     text-decoration: underline;
     font-weight: bold;
 }
-.section-center h1:hover {
+.section-left h1:hover {
     color: white;
     transition: all 1s ease-in;
 }
