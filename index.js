@@ -137,6 +137,7 @@ app.post('/user', async(req,res) => {
                 console.log(err)
             })
             res.redirect(`/users/${newUser._id}/home`) // Redirecting to new account
+            alert('New Account created succesfully')
         }
     }
     catch {
