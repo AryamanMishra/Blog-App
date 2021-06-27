@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    text-transform: capitalize;
+    font-family: 'Mukta', sans-serif;
+    color: #58A6FF;
+}
+body {
+    background-color: #0d1117;
+}
+.title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-decoration: underline;
+    font-weight: bold;
+}
+.edit-form {
+    width: 500px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    padding-bottom: 2rem;
+}
+input {
+    color: white;
+    font-size: 1.2rem;
+    width: 80%;
+    background-color: black;
+    text-transform: none;
+}
+
+textarea {
+    font-size: 1.2rem;
+    color: white;
+    width: 80%;
+    background-color: black;
+}
+label {
+    font-size: 1.1rem;
+    color: white;
+}
+input::placeholder {
+    color: white;
+}
+textarea::placeholder {
+    color: white;
+}
+.btn {
+    background-color: #238636;
+    color: white;
+    border: 2px solid white;
+    font-size: 1.15rem;
+    margin-top: 0.5rem;
+    width: 200px;
+    cursor: pointer;
+}
+.btn a {
+    color: white;
+    text-decoration: none;
+}
+.btn:hover {
+    border-color: #238636;
+    transition: all 1s ease-in;
+    background-color: white;
+    color: black;
+}
+.btn:hover a {
+    color: black;
+    transition: all 1s ease-in;
+}
+@media screen and (max-width: 600px) {
+    .signup-form {
+        width: 300px;
+    }
+    input {
+        width: 80%;
+    }
+    textarea {
+        width: 90%;
+    }
+    .btn {
+        width: 120px;
+    }
+    .wide {
+        width: 170px;
+    }
+}

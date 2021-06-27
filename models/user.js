@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
     },
     interests: {
         type:String,
-        required:true
     }
 })
 

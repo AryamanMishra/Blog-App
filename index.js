@@ -27,7 +27,6 @@ const mongoose = require('mongoose');
 /* Required alert module */
 const alert = require('alert');
 const bodyParser = require('body-parser'); 
-const { text } = require('body-parser');
 
 
 /* Connecting mongoose to mongodb */
@@ -236,7 +235,7 @@ app.get('/users/:id/profile/edit', async(req, res) => {
         //console.log('Profile updated')
     }
     catch{
-        console.log('error')
+        console.log('error in edit')
     }
 })
 
@@ -249,8 +248,9 @@ app.put('/edit', async(req,res) => {
         console.log(req.body)
         res.redirect(`/users/${id}/profile`)
     }
-    catch{
-        console.log('error')
+    catch(err){
+        console.log('error in edit put')
+        console.log(err)
     }
 })
 

@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit your profile</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/editDetails.css">
 </head>
 <body>
-    <h1>Edit your details</h1>
-    <form action="/edit?_method=PUT" method="POST">
+    <h1 class="title">Edit your details</h1>
+    <form action="/edit?_method=PUT" method="POST" class="edit-form">
         <label for="name"> Your name: </label>
         <input type="text" id="name" placeholder="Name" name="name" value="<%= user.name %> ">
         <br>
@@ -20,6 +23,7 @@
         <br>
         <label for="email"> Password: </label>
         <input type="password" id="password" placeholder="Your Password" name="password" value="<%= user.password %> ">
+        <button type="button" onclick="showPassword()" style="cursor: pointer;background-color:black;">Show password</button>
         <br>
         <input type="hidden" name="_id" id="id" value="<%= user._id %>">
         <textarea name="interests" id="interests" cols="30" rows="10" placeholder="About Yourself"></textarea>
@@ -29,6 +33,14 @@
     <script>
         function giveAlert() {
             alert('Profile Updated Successfully')
+        }
+        function showPassword() {
+            let password_space = document.getElementById('password')
+            if (password_space.type === 'password') {
+                password_space.type = 'text'
+            } else {
+                password_space.type = 'password'
+            }
         }
     </script>
 </body>
