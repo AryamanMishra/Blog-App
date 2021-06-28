@@ -226,7 +226,7 @@ app.post('/users/:id/home', (req,res) => {
 })
 
 
-
+/* GET request to edit user profile */
 app.get('/users/:id/profile/edit', async(req, res) => {
     try {
         const {id} = req.params
@@ -240,6 +240,7 @@ app.get('/users/:id/profile/edit', async(req, res) => {
 })
 
 
+/* POST request to edit user details */
 app.put('/edit', async(req,res) => {
     try {
         const id = req.body._id
@@ -254,6 +255,8 @@ app.put('/edit', async(req,res) => {
     }
 })
 
+
+/* DELETE request to delete a user profile */
 app.delete('/delete', async(req,res) => {
     const id = req.body._id
     const user = await User.findByIdAndDelete(id)
@@ -279,7 +282,7 @@ function textModify(text) {
 
 
 
-
+/* POST request to search a user by user name by the search input provided on home page */
 app.post('/users/searchUser', async(req,res) => {
     const validUsers = []
     const name_and_id = []
@@ -287,7 +290,7 @@ app.post('/users/searchUser', async(req,res) => {
     let temp = searchName
     searchName = textModify(searchName)
     const users = await User.find({name:searchName})
-    if (JSON.stringify(users) !== '[]') {
+    if (JSON.stringify(users) !== '[]') { // Checking if user name exists in database
         for (let i=0;i<users.length;i++) {
             validUsers.push(users[i])
         }
@@ -296,7 +299,7 @@ app.post('/users/searchUser', async(req,res) => {
         res.render('showUsers',{validUsers, name_and_id})
     }
     else {
-        res.render('users/userDetailserror')
+        res.render('users/userDetailserror') // No user found
     }
 })
 
