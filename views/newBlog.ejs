@@ -27,8 +27,13 @@
         <br>    
         <br>
         <input type="hidden" name="user_id" id="user_id" value="<%=id%>">
-        <button class="btn">Submit</button>
+        <button class="btn" onclick="givealert()">Submit</button>
         <br>
     </form>
+    <script>
+        function givealert() {
+            alert('Blog saved successfully')
+        }
+    </script>
 </body>
 </html>

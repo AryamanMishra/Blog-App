@@ -11,21 +11,38 @@
     <link rel="stylesheet" href="/css/myBlogs.css">
 </head>
 <body>
-    <div class="section-center">
-        <h1><%= user.name %>'s Blogs </h1>
+    <h1><%= user.name %>'s Blogs </h1>
+    <br>
         <ul>
-            <% for (let blog of blogs) { %> 
-                <li>Title: <%= blog.title %> </li>
-                <li>Tags: <%= blog.tags %> </li>
-                <li>Content: <%= blog.content %> </li>
-                <br>
-                <br>
-                <br>
-            <% } %> 
+                <% for (let blog of blogs) { %> 
+                    <div class="card">
+                        <li>Title: <%= blog.title %> </li>
+                        <li>Tags: <%= blog.tags %> 
+                        <br><br></li><button onclick="showContent('in_content<%= blog.title %>')" type="button" style="font-size:1em; cursor: pointer;background-color:darkgreen;color:yellowgreen;width:5em;height:3em;">See Blog</button>
+                            <div id= "in_content<%= blog.title %>" style="display: none; ">
+                                <p><%= blog.content %></p>
+                            </div>
+                        <br>
+                        <br>
+                        <br>
+                    </div> 
+                    <br>
+                    <br>
+                <% } %>
         </ul>
+    <section class="btn-area">
         <button class="btn"><a href="/">To login page</a></button>
         <br>
         <button class="btn"><a href="/users/<%= user._id %>/home">To home page</a> </button>
-    </div>
+    </section>
+    <script>
+        function showContent(id) {
+            let content = document.getElementById(id)
+            if (content.style.display === 'none')
+                content.style.display = 'block'
+            else    
+                content.style.display = 'none'
+        }
+    </script>
 </body>
 </html>

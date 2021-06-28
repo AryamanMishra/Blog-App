@@ -2,7 +2,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    text-transform: capitalize;
+    text-transform:none;
     font-family: 'Mukta', sans-serif;
     color: #58A6FF;
 }
@@ -43,6 +43,7 @@ textarea {
     color: white;
     width: 80%;
     background-color: black;
+    text-decoration: none;
 }
 label {
     font-size: 1.1rem;

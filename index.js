@@ -225,7 +225,6 @@ app.post('/users/:id/home', (req,res) => {
     newBlog.save().then(() => { // Saving blogs in database
         console.log('saved')
         res.redirect(`/users/${req.body.user_id}/home/My-Blogs`)
-        alert('Blog Saved')
     })
     .catch(err => {
         console.log(err)
