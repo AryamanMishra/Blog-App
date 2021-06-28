@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+    color: #58A6FF;
+}
+body {
+    background-color: #0d1117;
+}

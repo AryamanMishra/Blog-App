@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details</title>
+    <title><%= user.name  %>'s Blogs </title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     
     <!-- styles -->
     <link rel="stylesheet" href="/css/showUserDetails.css">
 </head>
 <body>
-    <ul>
-        <li><%=user.name%></li>
-        <li><%=user.interests%></li> 
-        <li><a href="/users/search/<%= id %>/blogs">See <%= user.name %>'s Blogs</a></li>
-    </ul> 
+    <%= blogs %> 
 </body>
 </html>

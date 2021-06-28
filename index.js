@@ -165,7 +165,7 @@ app.get('/users/:id/showProfile', async(req,res) => {
         const {id} = req.params
         const user = await User.findById(id)
         //console.log(user) 
-        res.render('users/showUserDetails', {user}) // To show user details
+        res.render('users/showUserDetails', {user,id}) // To show user details
     }
     catch {
         res.render('users/userDetailserror')
@@ -196,10 +196,17 @@ app.get('/users/:id/home/My-Blogs', async(req,res) => {
         res.render('users/myBlogs',{user,blogs}) // Rendering myBlogs page
     }
     catch {
-        console.log('error')
+        console.log('error in myblogs')
     }
 })
 
+
+app.get('/users/search/:id/Blogs', async(req,res) => {
+    const id = req.params.id
+    const user = await User.findById(id)
+    const blogs = await Blog.findById(id)
+    res.render('showBlogs', {user,blogs})
+})
 
 
 
@@ -296,7 +303,7 @@ app.post('/users/searchUser', async(req,res) => {
         }
         name_and_id.push(temp)
         name_and_id.push(req.body.id)
-        res.render('showUsers',{validUsers, name_and_id})
+        res.render('showUsers',{validUsers, name_and_id,searchName})
     }
     else {
         res.render('users/userDetailserror') // No user found
