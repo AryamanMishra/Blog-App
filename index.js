@@ -1,5 +1,5 @@
 /*
-    BlogAddict
+    BlogAddiction
     Running on express and mongodb
 
 */
@@ -95,10 +95,10 @@ app.post('/existing', (req,res) => {
 
         /* No user found */
         .catch (err => {
-            alert('User by these credentials does not exist, please sign up')
+            //alert('User by these credentials does not exist, please sign up')
             res.redirect('/') // Redirecting to login page
             //console.log(err)
-            //console.log('fail')
+            console.log(err)
         })
 })
 
