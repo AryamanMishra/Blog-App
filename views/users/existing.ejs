@@ -14,23 +14,39 @@
     <h1 class="title">Sign in</h1>
     <form action="/existing" method="POST" style="text-align: center;" class="signup-form">
         <label for="name">Enter your name: </label>
-        <input type="text" id="name" placeholder="Name" name="name">
+        <input type="text" id="name" placeholder="Name" name="name" required>
         <br>
         <label for="age">Enter your age: </label>
-        <input type="text" id="age" placeholder="Age" name="age">
+        <input type="text" id="age" placeholder="Age" name="age" required>
         <br>
         <label for="email">Enter your email address: </label>
-        <input type="text" id="email" placeholder="Email" name="email">
+        <input type="text" id="email" placeholder="Email" name="email" required>
         <br>
         <label for="email">Enter your password: </label>
-        <input type="password" id="password" placeholder="Your Password" name="password">
+        <input type="password" id="password" placeholder="Your Password" name="password" required><button style="background-color: black;color:white;cursor:pointer" onclick="show()" type="button" id="showpasswordbutton">Show Password</button>
         <br>
         <button class="btn" onclick="welcome()">Submit</button>
         <button class="btn wide"><a href="/">Back to home page</a></button>
     </form>
     <script>
         function welcome() {
-            alert('Signed in successfully')
+            if (document.getElementById('name').textContent.length == 0 && document.getElementById('age').textContent.length == 0 && document.getElementById('email').textContent.length == 0 && document.getElementById('password').textContent.length == 0){
+
+            }
+            else    
+                alert('Signed in successfully')
+        }
+        function show() {
+            let password = document.getElementById('password')
+            let showpasswordbutton = document.getElementById('showpasswordbutton')
+            if (password.type == 'password') {
+                password.type = 'text'
+                showpasswordbutton.textContent = 'Hide Password'
+            }
+            else {
+                password.type = 'password'
+                showpasswordbutton.textContent = 'Show Password'
+            }
         }
     </script>
 </body>

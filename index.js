@@ -85,7 +85,7 @@ app.post('/existing', (req,res) => {
     let userTocheck = req.body
 
     /* Finding appropriate existing user */
-    const findUser = User.findOne({name:userTocheck.name,age:parseInt(userTocheck.age),email:userTocheck.email})
+    const findUser = User.findOne({email:userTocheck.email})
         .then((data) => {
             //alert(`Signed in successfully`)
             res.redirect(`/users/${data._id}/home`) // User found
@@ -96,10 +96,11 @@ app.post('/existing', (req,res) => {
         /* No user found */
         .catch (err => {
             //alert('User by these credentials does not exist, please sign up')
-            res.redirect('/') // Redirecting to login page
+            res.render('users/userDetailserror.ejs') // Redirecting to login page
             //console.log(err)
             console.log(err)
         })
+    console.log(findUser)
 })
 
 
@@ -119,7 +120,7 @@ app.post('/user', async(req,res) => {
         // console.log(check)
 
         /* Already exisiting account found */
-        /* Check is an array */
+        /* check is an array */
         if (JSON.stringify(check) !== '[]') {
             alert(`Account exists \nLogged in as ${check[0].name}`)
             console.log('same user')
