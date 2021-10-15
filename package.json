@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "alert": "^5.0.10",
+    "awesome-notifications": "^3.1.2",
     "body-parser": "^1.19.0",
     "component-classes": "^1.2.6",
     "confirm-dialog": "^0.1.2",
@@ -18,6 +19,7 @@
     "event": "^1.0.0",
     "events": "^3.3.0",
     "express": "^4.17.1",
+    "js-alert": "^1.0.4",
     "method-override": "^3.0.0",
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.15",

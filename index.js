@@ -85,7 +85,7 @@ app.post('/existing', (req,res) => {
     let userTocheck = req.body
 
     /* Finding appropriate existing user */
-    const findUser = User.findOne({email:userTocheck.email})
+    const findUser = User.findOne({name:userTocheck.name, age:userTocheck.age, email:userTocheck.email, password:userTocheck.password})
         .then((data) => {
             //alert(`Signed in successfully`)
             res.redirect(`/users/${data._id}/home`) // User found
@@ -122,13 +122,14 @@ app.post('/user', async(req,res) => {
         /* Already exisiting account found */
         /* check is an array */
         if (JSON.stringify(check) !== '[]') {
-            alert(`Account exists \nLogged in as ${check[0].name}`)
+            alert(`Account already exists \nLogged in as ${check[0].name}`);
             console.log('same user')
             res.redirect(`/users/${check[0]._id}/home`) // Redirecting to already existing accout
         }
 
         /* Creating new account and saving to DB */
         else {
+            const emailcheck = await User.find({email:newUser.email})
             newUser.save().then(() => {
                 console.log('new user logged in')
             })
@@ -136,12 +137,18 @@ app.post('/user', async(req,res) => {
                 console.log('error')
                 console.log(err)
             })
-            res.redirect(`/users/${newUser._id}/home`) // Redirecting to new account
-            alert('New Account created succesfully')
+            if (JSON.stringify(emailcheck) !== '[]') {
+                res.render('users/emailexists')
+            }
+            else {
+                res.redirect(`/users/${newUser._id}/home`) // Redirecting to new account
+                alert('New Account created succesfully')
+            }
         }
     }
-    catch {
+    catch(error) {
         console.log('Sign Up error!!!!')
+        console.log(error)
         res.redirect('/users/userDetailserror') // Error page
     }
 })
