@@ -1,6 +1,5 @@
 /*
     BlogAddiction
-    Running on express and mongodb
 
 */
 
