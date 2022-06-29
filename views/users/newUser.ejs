@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1 class="title">New User</h1>
-    <form action="/user" method="POST" style="text-align: center;" class="signup-form">
+    <form action="/users/new" method="POST" style="text-align: center;" class="signup-form">
         <label for="name">Enter your name</label>
         <input type="text" id="name" placeholder="Name" name="name" required>
         <br>
@@ -29,7 +29,7 @@
         <label for="interests">Bio:</label>
         <textarea name="interests" id="interests" cols="30" rows="10" placeholder="About Yourself"></textarea>
         <br>
-        <button class="btn" onclick="show()">Save</button>
+        <button class="btn" onclick="show()">Sign Up</button>
         <button class="btn wide"><a href="/">Back to Home page</a></button>
     </form>
 </body>

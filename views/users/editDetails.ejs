@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1 class="title">Edit your details</h1>
-    <form action="/edit?_method=PUT" method="POST" class="edit-form">
+    <form action="/users/:id/profile/edit?_method=PUT" method="POST" class="edit-form">
         <label for="name"> Your name: </label>
         <input type="text" id="name" placeholder="Name" name="name" value="<%= user.name %> ">
         <br>
