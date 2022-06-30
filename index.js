@@ -13,6 +13,8 @@ const path = require('path')
 
 /* Required module for method overriding used to include requests other than POST and GET in ejs*/   
 const methodOverride = require('method-override')
+const session = require('express-session')
+const flash = require('connect-flash')
 
 /* Required models to be used */
 const User = require('./models/user');
@@ -20,12 +22,19 @@ const Blog = require('./models/blog');
 
 
 
+const requireLogin = require('./middleware/requireLogin')
+
 
 
 const bodyParser = require('body-parser'); 
 
 
 require('./db/mongoose')
+
+
+
+app.use(session({secret:'asecret', resave:false, saveUninitialized:'destroy'}))
+app.use(flash())
 
 
 
@@ -74,6 +83,12 @@ const userHomeRoute = require('./routes/userHome')
 const allBlogsRoute = require('./routes/allBlogs')
 
 
+/* Setting up res.locals for flash */
+app.use((req,res,next) => {
+    res.locals.messages = req.flash('success_log_in')
+    next()
+})
+
 
 
 app.use('/', homePageRoute)
@@ -88,7 +103,6 @@ app.use('/', userBlogRoute)
 app.use('/', userProfileRoute)
 app.use('/', userHomeRoute)
 app.use('/', allBlogsRoute)
-
 
 
 // app.get('/users/:id/showProfile', async(req,res) => {
@@ -109,7 +123,7 @@ app.use('/', allBlogsRoute)
 
 
 /* Get request for any other route requested by user */
-app.get('*', (req,res) => {
+app.get('*', requireLogin, (req,res) => {
     res.render('pageNotFound')
 })
 

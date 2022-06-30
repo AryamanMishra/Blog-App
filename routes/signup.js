@@ -45,6 +45,7 @@ router.post('/users/new', async(req,res) => {
             })
             await user.save()
             req.session.user_id = user._id
+            req.flash('success_sign_up', 'Signed Up Successfully')
             res.redirect(`/users/${user._id}/home`) // Redirecting to new account
         }
     }
