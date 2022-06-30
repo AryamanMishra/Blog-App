@@ -110,7 +110,7 @@ app.use('/', allBlogsRoute)
 
 /* Get request for any other route requested by user */
 app.get('*', (req,res) => {
-    res.send('The website is still in progrees so hold up!!');
+    res.render('pageNotFound')
 })
 
 
