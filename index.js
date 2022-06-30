@@ -1,7 +1,7 @@
 /*
     BlogAddiction
-    Heroku deployment started
-    
+    Heroku deployed
+
 */
 
 
