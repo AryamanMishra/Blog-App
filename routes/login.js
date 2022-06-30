@@ -11,7 +11,7 @@ const User = require('../models/user');
 
 
 
-router.use(session({secret:'asecret'}))
+router.use(session({secret:'asecret', resave:false, saveUninitialized:'destroy'}))
 
 
 /* Login form GET request */

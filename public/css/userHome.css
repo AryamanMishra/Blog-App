@@ -30,19 +30,22 @@ body {
     width: 200px;
     font-size: 1.2rem;
 }
+
 .btn:hover {
     border-color: #238636;
-    transition: all 1s ease-in;
-    background-color: white;
+    transition: all 0.8s ease-in;
+    background-color: blue
 }
 a {
     text-decoration: none;
     color: white;
 }
 .btn:hover a {
-    color: black;
-    transition: all 1s ease-in;
+    color: yellow;
+    transition: all 0.8s ease-in;
 }
+
+
 
 @media screen and (max-width: 500px) {
     .title {

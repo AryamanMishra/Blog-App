@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 
+const requireLogin = require('../middleware/requireLogin')
+
 /* Required models to be used */
 const User = require('../models/user');
 
@@ -10,16 +12,11 @@ const User = require('../models/user');
 
 
 /* Showing user profile page */
-router.get('/users/:id/profile', async(req,res) => {
+router.get('/users/:id/profile', requireLogin, async(req,res) => {
     try {
-        if (req.session.user_id) {
-            const {id} = req.params
-            const user = await User.findById(id)
-            res.render('users/userDetails', {user}) // To show user details
-        }
-        else {
-            res.redirect('/users/existing')
-        }
+        const {id} = req.params
+        const user = await User.findById(id)
+        res.render('users/userDetails', {user}) // To show user details
     }
     catch {
         res.render('users/userDetailserror')

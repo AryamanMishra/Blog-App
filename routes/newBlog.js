@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 
+const requireLogin = require('../middleware/requireLogin')
+
 /* Required models to be used */
 const User = require('../models/user');
 const Blog = require('../models/blog');
@@ -10,14 +12,9 @@ const Blog = require('../models/blog');
 
 
 /* Functionality to create new blog */
-router.get('/users/:id/home/new', (req,res) => {
-    if (req.session.user_id) {
-        const {id} = req.params
-        res.render('newBlog', {id}) // id passed to keep it hidden on newBlog page to be used for searching
-    }
-    else {
-        res.redirect('/users/existing')
-    }
+router.get('/users/:id/home/new', requireLogin, (req,res) => {
+    const {id} = req.params
+    res.render('newBlog', {id}) // id passed to keep it hidden on newBlog page to be used for searching
 })
 
 
