@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
-
+const bcrypt = require('bcrypt')
 
 
 /* Required alert module */
@@ -23,37 +23,28 @@ router.get('/users/new', (req,res) => {
 /* Functionality for POST request recieved from newUser.ejs for signup */
 router.post('/users/new', async(req,res) => {
     try {
-        const newUser = new User(req.body)
-        const check = await User.find({name:newUser.name, age:newUser.age, email:newUser.email, password:newUser.password})
-        // console.log(newUser)
-        // console.log('b/w')
-        // console.log(check)
+        const {name,age,interests,email,password} = req.body
+        const check = await User.find({email:email})
+   
 
         /* Already exisiting account found */
         /* check is an array */
         if (JSON.stringify(check) !== '[]') {
-            alert(`Account already exists \nLogged in as ${check[0].name}`);
-            console.log('same user')
-            res.redirect(`/users/${check[0]._id}/home`) // Redirecting to already existing accout
+            res.render('users/emailexists')
         }
 
         /* Creating new account and saving to DB */
         else {
-            const emailcheck = await User.find({email:newUser.email})
-            newUser.save().then(() => {
-                console.log('new user logged in')
+            const hash = await bcrypt.hash(password, 12) 
+            const user = new User({
+                name,
+                age,
+                email,
+                password:hash,
+                interests
             })
-            .catch(err => {
-                console.log('error')
-                console.log(err)
-            })
-            if (JSON.stringify(emailcheck) !== '[]') {
-                res.render('users/emailexists')
-            }
-            else {
-                res.redirect(`/users/${newUser._id}/home`) // Redirecting to new account
-                alert('New Account created succesfully')
-            }
+            await user.save()
+            res.redirect(`/users/${user._id}/home`) // Redirecting to new account
         }
     }
     catch(error) {

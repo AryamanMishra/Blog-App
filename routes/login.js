@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
-
+const bcrypt = require('bcrypt')
 
 
 /* Required models to be used */
@@ -19,21 +19,21 @@ router.get('/users/existing', (req,res) => {
 
 /* Functionality for POST request recieved from existing.ejs for login */
 
-router.post('/users/existing', (req,res) => {
-    let userTocheck = req.body
-
-    /* Finding appropriate existing user */
-    const findUser = User.findOne({name:userTocheck.name, age:userTocheck.age, email:userTocheck.email, password:userTocheck.password})
-        .then((data) => {
-            res.redirect(`/users/${data._id}/home`) // User found
-            console.log('success')
-            console.log(data)
-        })
-
-        /* No user found */
-        .catch (err => {
-            res.render('users/userDetailserror.ejs') // Redirecting to login page
-        })
+router.post('/users/existing', async(req,res) => {
+    const {email,password} = req.body
+    const user = await User.findOne({email})
+    if (!user) {
+        res.render('users/userDetailserror')
+    }
+    else {
+        const validPassword = await bcrypt.compare(password,user.password)
+        if (validPassword) {
+            res.redirect(`/users/${user._id}/home`) // User found
+        }
+        else {
+            res.render('users/userDetailserror')
+        }
+    }
 })
 
 
