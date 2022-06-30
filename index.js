@@ -4,6 +4,12 @@
 */
 
 
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+
+
 /* Required module for express */
 const express = require('express')
 const app = express()
@@ -11,30 +17,68 @@ const app = express()
 /* Required module for path */
 const path = require('path')
 
+
 /* Required module for method overriding used to include requests other than POST and GET in ejs*/   
 const methodOverride = require('method-override')
+
+
+/* requiring session and flash */
 const session = require('express-session')
 const flash = require('connect-flash')
+const bodyParser = require('body-parser');
 
-/* Required models to be used */
+
+
+/* requirelogin middleware */
+const requireLogin = require('./middleware/requireLogin')
+
+
+/* requiring models to be used */
 const User = require('./models/user');
 const Blog = require('./models/blog');
 
 
 
-const requireLogin = require('./middleware/requireLogin')
-
-
-
-const bodyParser = require('body-parser'); 
-
-
+/* requiring db file and setting dbUrl*/
 require('./db/mongoose')
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/BlogApp';
+const secret = process.env.SECRET || 'helloiamasecret'
 
 
 
-app.use(session({secret:'asecret', resave:false, saveUninitialized:'destroy'}))
+
+/* configuring mongo to store sessions */
+const MongoDBStore = require("connect-mongo")   
+
+const store = MongoDBStore.create({
+    mongoUrl: dbUrl,
+    secret,
+    touchAfter: 24*60*60
+})
+
+/* checking for mongo store errors */
+store.on('error', () => {
+    console.log('session store error')
+})
+ 
+
+
+/* configuration of a session */
+const sessionConfig = {
+    store,
+    name:'session',
+    secret, 
+    resave:false, 
+    saveUninitialized:true
+} 
+
+
+/* using session with configuration as stated above*/
+app.use(session(sessionConfig))
+
+/* using flash */
 app.use(flash())
+
 
 
 
@@ -51,15 +95,26 @@ app.set('view engine','ejs')
 
 app.use(express.json());
 
+
 /* Use method of express to convert the req object to readable form */
 app.use(express.urlencoded({extended:true}))
 
 /* Use method of express to invoke methodOverride with key name '_method' */
 app.use(methodOverride('_method'))
 
+
+/* bodyparser */
 app.use(bodyParser.urlencoded({
     extended: true
   }));
+
+
+/* Setting up res.locals for flash */
+app.use((req,res,next) => {
+    res.locals.messages = req.flash('success_log_in')
+    next()
+})
+
 
 
 /*
@@ -82,12 +137,6 @@ const userProfileRoute = require('./routes/userProfile')
 const userHomeRoute = require('./routes/userHome')
 const allBlogsRoute = require('./routes/allBlogs')
 
-
-/* Setting up res.locals for flash */
-app.use((req,res,next) => {
-    res.locals.messages = req.flash('success_log_in')
-    next()
-})
 
 
 
@@ -129,7 +178,9 @@ app.get('*', requireLogin, (req,res) => {
 
 
 
-/* Currently listening on port 3000 */
-app.listen(3000,() => {
-    console.log('APP IS LIVE')
+
+/* Setting up local or heroku generated port and adding to listen event*/
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`LISTENING ON PORT ${port}`)
 })
