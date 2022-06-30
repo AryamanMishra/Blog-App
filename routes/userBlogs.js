@@ -12,11 +12,16 @@ const Blog = require('../models/blog');
 /* Functionality to see blogs created by user */
 router.get('/users/:id/home/My-Blogs', async(req,res) => {
     try {
-        const {id} = req.params
-        const user = await User.findById(id)
-        const blogs = await Blog.find({user_id:id})
-        //console.log(blogs)
-        res.render('users/myBlogs',{user,blogs}) // Rendering myBlogs page
+        if (req.session.user_id) {
+            const {id} = req.params
+            const user = await User.findById(id)
+            const blogs = await Blog.find({user_id:id})
+            //console.log(blogs)
+            res.render('users/myBlogs',{user,blogs}) // Rendering myBlogs page
+        }
+        else {
+            res.redirect('/users/existing')
+        }
     }
     catch {
         console.log('error in myblogs')

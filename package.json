@@ -20,6 +20,7 @@
     "event": "^1.0.0",
     "events": "^3.3.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.3",
     "js-alert": "^1.0.4",
     "method-override": "^3.0.0",
     "mongodb": "^3.6.9",

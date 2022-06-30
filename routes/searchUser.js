@@ -31,23 +31,29 @@ function textModify(text) {
 
 /* POST request to search a user by user name by the search input provided on home page */
 router.post('/users/searchUser', async(req,res) => {
-    const validUsers = []
-    const name_and_id = []
-    let searchName = req.body.name
-    let temp = searchName
-    searchName = textModify(searchName)
-    const users = await User.find({name:searchName})
-    if (JSON.stringify(users) !== '[]') { // Checking if user name exists in database
-        for (let i=0;i<users.length;i++) {
-            validUsers.push(users[i])
+    if (req.session.user_id) { 
+        const validUsers = []
+        const name_and_id = []
+        let searchName = req.body.name
+        let temp = searchName
+        searchName = textModify(searchName)
+        const users = await User.find({name:searchName})
+        if (JSON.stringify(users) !== '[]') { // Checking if user name exists in database
+            for (let i=0;i<users.length;i++) {
+                validUsers.push(users[i])
+            }
+            name_and_id.push(temp)
+            name_and_id.push(req.body.id)
+            res.render('showUsers',{validUsers, name_and_id,searchName})
         }
-        name_and_id.push(temp)
-        name_and_id.push(req.body.id)
-        res.render('showUsers',{validUsers, name_and_id,searchName})
+        else {
+            res.render('users/userDetailserror') // No user found
+        }
     }
     else {
-        res.render('users/userDetailserror') // No user found
+        res.redirect('/users/existing')
     }
+    
 })
 
 module.exports = router

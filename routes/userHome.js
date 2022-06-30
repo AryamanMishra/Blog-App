@@ -11,9 +11,14 @@ const Blog = require('../models/blog');
 /* User home page */
 router.get('/users/:id/home', async(req,res) => {
     try {
-        const { id } = req.params
-        const user = await User.findById(id)
-        res.render('users/userHome', {user}) // Home page
+        if (req.session.user_id) {
+            const { id } = req.params
+            const user = await User.findById(id)
+            res.render('users/userHome', {user}) // Home page
+        }
+        else {
+            res.redirect('/users/existing')
+        }
     }
     catch {
         res.render('users/userDetailserror')

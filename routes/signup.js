@@ -44,6 +44,7 @@ router.post('/users/new', async(req,res) => {
                 interests
             })
             await user.save()
+            req.session.user_id = user._id
             res.redirect(`/users/${user._id}/home`) // Redirecting to new account
         }
     }

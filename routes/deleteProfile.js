@@ -9,9 +9,14 @@ const User = require('../models/user');
 
 /* DELETE request to delete a user profile */
 router.delete('/delete', async(req,res) => {
-    const id = req.body._id
-    const user = await User.findByIdAndDelete(id)
-    res.redirect('/')
+    if (req.session.user_id) {
+        const id = req.body._id
+        const user = await User.findByIdAndDelete(id)
+        res.redirect('/')
+    }
+    else {
+        res.redirect('/users/existing')
+    }
 })
 
 

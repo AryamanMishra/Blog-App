@@ -11,8 +11,13 @@ const Blog = require('../models/blog');
 
 /* Functionality to create new blog */
 router.get('/users/:id/home/new', (req,res) => {
-    const {id} = req.params
-    res.render('newBlog', {id}) // id passed to keep it hidden on newBlog page to be used for searching
+    if (req.session.user_id) {
+        const {id} = req.params
+        res.render('newBlog', {id}) // id passed to keep it hidden on newBlog page to be used for searching
+    }
+    else {
+        res.redirect('/users/existing')
+    }
 })
 
 
