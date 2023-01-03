@@ -17,7 +17,7 @@ h2 {
     bottom: 60px;
 }
 
-a {
+#newuser {
     position: relative;
     top: 40px;
     right: 63px;
@@ -73,17 +73,28 @@ a {
 }
 
 
-/* @media screen and (max-width: 600px) {
-    .section-center {
+@media screen and (max-width: 400px) {
+    .login-form {
         width: 90%;
     }
-    .section-center h1 {
+        h1 {
         font-size: 1.5rem;
     }
-    .section-center h2 {
+        h2 {
         font-size: 1.2rem;
         padding: 0.25rem;
         width: 150px;
     }
+    .actual-form input{
+        width: 60%;
+    }
+    #newuser {
+        font-size: 1rem;
+        width: 150px;
+        padding-left: 3rem;
+    }
+    #btn {
+        font-size: 1.25rem;
+        width: 70%;
+    }
 }
-*/

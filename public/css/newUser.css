@@ -60,20 +60,25 @@ textarea {
     text-decoration: none;
 }
 
+
 @media screen and (max-width: 600px) {
     .signup-form {
         width: 300px;
     }
     input {
-        width: 80%;
+        width: 85%;
     }
     textarea {
         width: 90%;
     }
     .btn {
-        width: 120px;
+        font-size: 1.25rem;
+        width: 62%;
     }
-    .wide {
-        width: 170px;
+    #backbutton {
+        padding: 10px;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
     }
 }
