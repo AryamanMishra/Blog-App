@@ -13,23 +13,20 @@
 
 </head>
 <body>
-    <div class="center-heading">
+    <div class="main-body">
         <h1>Blog App</h1>
-    </div>
-    <div class="center-content">
-        <!-- <h2><a href="/users/new">Sign Up</a></h2> -->
-        <h2>
-            Sign in
-        </h2>
-        <form action="/users/existing" method="POST" style="text-align: center;" class="login-form">
-            <input type="text" id="email" placeholder="Email" name="email" required>
-            <br>
-            <input type="password" id="password" placeholder="Password" name="password" required>
-            
-            <br>
-            <button id="btn" onclick="welcome()">Submit</button>
-        </form>
-        <a href="/users/new" id="signuplink">Dont have an account?</a>
+        <div class="login-form">
+            <h2> Sign in</h2>
+            <form action="/users/existing" method="POST" class="actual-form">
+                <input type="text" id="email" placeholder="Email" name="email" required>
+                <br>
+                <input type="password" id="password" placeholder="Password" name="password" required>
+                
+                <br>
+                <button id="btn" onclick="welcome()">Submit</button>
+            </form>
+            <a href="/users/new">Dont have an account?</a>
+        </div>
     </div>
 </body>
 </html>

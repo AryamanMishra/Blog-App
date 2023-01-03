@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 .signup-form {
-    border: 2px rgb(50, 84, 205) solid;
+    border: 2.5px rgb(50, 84, 205) solid;
         border-radius: 3%;
         padding: 10px;
     width: 500px;
@@ -27,10 +27,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     align-items: center;
-    gap: 0.25rem;
-    padding-bottom: 2rem;
+    gap: 0.15rem;
 }
 
 input {
