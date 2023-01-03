@@ -1,56 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: 'Mukta', sans-serif;
-    color: #58A6FF;
+    font-family: 'Quicksand', sans-serif;
+        color: yellow;
 }
 body {
-    background-color: #0d1117;
+    background-color: #050212;
 }
-.section-center {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+h1 {
+    width: 400px;
+    height: 100px;
+    color: yellow;
+    margin-left: 710px;
+    margin-top: 10px;
 }
-.section-center h1 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    text-decoration: underline;
-    font-weight: bold;
-}
-.section-center h1:hover {
-    color: white;
-    transition: all 1s ease-in;
-}
-.section-center h2 {
-    margin-top: 0.4rem;
-    cursor: pointer;
-    background-color: #238636;
-    border: 2px solid white;
-    padding: 0.35rem;
-    width: 200px;
-}
-.section-center h2 a {
-    color: white;
-    text-decoration: none;
-}
-.section-center h2:hover {
-    border-color: #238636;
-    transition: all 1s ease-in;
-    background-color: white;
-}
-.section-center h2:hover a {
-    color: black;
+.center-content h2 {
+    margin: auto;
+    padding-left: 210px;
 }
 
-@media screen and (max-width: 600px) {
+.center-content {
+    width: 510px;
+    height: 470px;
+    margin-top: 60px;
+    margin-left: 520px;
+    border: 2px rgb(50, 84, 205) solid;
+    border-radius: 3%;
+    padding: 10px;
+}
+
+.login-form {
+    width: 50px;
+    height: 50px;
+    padding-left: 100px;
+    padding-top: 70px;
+}
+
+#email {
+    border: 1.5px rgb(50, 205, 60) solid;
+    border-radius: 25px;
+    font-size: 22px;
+    width: 300px;
+    height: 50px;
+    background-color: #050212;
+}
+#password {
+    border: 1.5px rgb(50, 205, 60) solid;
+    border-radius: 25px;
+    font-size: 22px;
+    width: 300px;
+    height: 50px;
+    margin-top: 40px;
+    background-color: #050212;
+}
+#btn {
+    font-size: 22px;
+    margin-top: 70px;
+    cursor: pointer;
+    width: 300px;
+        height: 50px;
+        padding-right: 20px;
+        background-color: #050212;
+        border: 1.5px rgb(50, 205, 60) solid;
+}
+#btn:hover {
+    box-shadow: 0px 0.5em 0.5em -0.4em gold;
+    transform: translateY(-0.25em);
+}
+#signuplink {
+    position: relative;
+    top: 310px;
+    left: 100px;
+}
+
+/* @media screen and (max-width: 600px) {
     .section-center {
         width: 90%;
     }
@@ -63,3 +87,4 @@ body {
         width: 150px;
     }
 }
+*/

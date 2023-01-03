@@ -14,37 +14,18 @@
 <body>
     <h1 class="title">New User</h1>
     <form action="/users/new" method="POST" style="text-align: center;" class="signup-form">
-        <label for="name">Enter your name</label>
         <input type="text" id="name" placeholder="Name" name="name" required>
         <br>
-        <label for="age">Enter your age</label>
         <input type="number" id="age" placeholder="Age" name="age" min="1" required>
         <br>
-        <label for="email">Enter your email address</label>
         <input type="text" id="email" placeholder="Email" name="email" required>
         <br>
-        <label for="password"> Your BlogAddiction password: </label>
-        <input type="password" id="password" name="password" placeholder="Enter a password" required minlength="8"><button style="background-color: black;color:white;cursor:pointer" onclick="show()" type="button" id="showpasswordbutton">Show Password</button>
+        <input type="password" id="password" name="password" placeholder="Enter a password" required minlength="8">
         <br>
-        <label for="interests">Bio:</label>
         <textarea name="interests" id="interests" cols="30" rows="10" placeholder="About Yourself"></textarea>
         <br>
         <button class="btn" onclick="show()">Sign Up</button>
-        <button class="btn wide"><a href="/">Back to Home page</a></button>
+        <a href="/"><button class="btn" id="backbutton">Back to Home page</button></a>
     </form>
 </body>
-<script>
-    function show() {
-        let password = document.getElementById('password')
-        let showpasswordbutton = document.getElementById('showpasswordbutton')
-        if (password.type == 'password') {
-            password.type = 'text'
-            showpasswordbutton.textContent = 'Hide Password'
-        }
-        else {
-            password.type = 'password'
-            showpasswordbutton.textContent = 'Show Password'
-        }
-    }
-</script>
 </html>

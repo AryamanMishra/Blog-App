@@ -1,5 +1,5 @@
 /*
-    BlogAddiction
+    BlogApp
     Heroku deployed
 
 */
@@ -181,7 +181,7 @@ app.get('*', requireLogin, (req,res) => {
 
 
 /* Setting up local or heroku generated port and adding to listen event*/
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 app.listen(port, () => {
     console.log(`LISTENING ON PORT ${port}`)
 })

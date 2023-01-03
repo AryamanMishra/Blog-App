@@ -9,16 +9,27 @@
     
     <!-- styles -->
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <section class="section-center">
-        <h1>Welcome to BlogAddiction</h1>
-        <h2><a href="/users/new">Sign Up</a></h2>
-        <h2><a href="/users/existing">Sign in</a></h2>
-    </section>
-    <center>
-        <a href="https://github.com/AryamanMishra/BlogApp">Github</a>
-    </center>
+    <div class="center-heading">
+        <h1>Blog App</h1>
+    </div>
+    <div class="center-content">
+        <!-- <h2><a href="/users/new">Sign Up</a></h2> -->
+        <h2>
+            Sign in
+        </h2>
+        <form action="/users/existing" method="POST" style="text-align: center;" class="login-form">
+            <input type="text" id="email" placeholder="Email" name="email" required>
+            <br>
+            <input type="password" id="password" placeholder="Password" name="password" required>
+            
+            <br>
+            <button id="btn" onclick="welcome()">Submit</button>
+        </form>
+        <a href="/users/new" id="signuplink">Dont have an account?</a>
+    </div>
 </body>
 </html>
