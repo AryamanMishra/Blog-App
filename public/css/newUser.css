@@ -4,13 +4,14 @@
     box-sizing: border-box;
     margin: 0;
     font-family: 'Quicksand', sans-serif;
-        color: yellow;
         background-color: #050212;
 }
 
+
 .title {
+    color: yellow;
     position: absolute;
-    top: 10%;
+    top: 9%;
     left: 50%;
     transform: translate(-50%, -110%);
     font-weight: bold;
@@ -21,7 +22,7 @@
         padding: 10px;
     width: 500px;
     position: absolute;
-    top: 15%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -32,16 +33,19 @@
 }
 
 input {
+    color: yellow;
     font-size: 1.2rem;
     width: 80%;
     text-transform: none;
 }
 textarea {
+    color: yellow;
     font-size: 1.2rem;
     width: 80%;
 }
 
 .btn {
+    color: yellow;
     text-decoration: none;
     font-size: 22px;
         margin-top: 10px;
@@ -57,9 +61,21 @@ textarea {
         transform: translateY(-0.25em);
 }
 #backbutton {
+    color: yellow;
     text-decoration: none;
 }
 
+.footer  {
+    position: relative;
+    top: 750px;
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    border-top: 1px solid grey;
+}
+.footer a {
+    color: white;
+}
 
 @media screen and (max-width: 600px) {
     .signup-form {
@@ -69,7 +85,7 @@ textarea {
         width: 85%;
     }
     textarea {
-        width: 90%;
+        width: 80%;
     }
     .btn {
         font-size: 1.25rem;
