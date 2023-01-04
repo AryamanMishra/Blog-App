@@ -133,23 +133,22 @@ const deleteProfileRoute = require('./routes/deleteProfile')
 const editProfileRoute = require('./routes/editProfile')
 const newBlogRoute = require('./routes/newBlog')
 const searchUserRoute = require('./routes/searchUser')
-const userBlogRoute = require('./routes/userBlogs')
-const userProfileRoute = require('./routes/userProfile')
-const userHomeRoute = require('./routes/userHome')
-const allBlogsRoute = require('./routes/allBlogs')
+const userBlogHomeRoute = require("./routes/userBlogsHome");
+const userProfileRoute = require("./routes/userProfile");
+const userHomeRoute = require("./routes/userHome");
+const allBlogsRoute = require("./routes/allBlogs");
+const userBlogContentRoute = require("./routes/userBlogContent");
 
-
-
-
-app.use('/', homePageRoute)
-app.use('/', loginPageRoute)
-app.use('/', signUpPageRoute)
-app.use('/', logOutRoute)
-app.use('/', deleteProfileRoute)
-app.use('/', editProfileRoute)
-app.use('/', newBlogRoute)
-app.use('/', searchUserRoute)
-app.use('/', userBlogRoute)
+app.use("/", homePageRoute);
+app.use("/", loginPageRoute);
+app.use("/", signUpPageRoute);
+app.use("/", logOutRoute);
+app.use("/", deleteProfileRoute);
+app.use("/", editProfileRoute);
+app.use("/", newBlogRoute);
+app.use("/", searchUserRoute);
+app.use("/", userBlogHomeRoute);
+app.use("/", userBlogContentRoute);
 app.use('/', userProfileRoute)
 app.use('/', userHomeRoute)
 app.use('/', allBlogsRoute)

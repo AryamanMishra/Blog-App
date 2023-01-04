@@ -8,41 +8,28 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
     <!-- styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/myBlogs.css">
 </head>
 <body>
-    <h1><%= user.name %>'s Blogs </h1>
+    <h1>Your Blogs </h1>
     <br>
-        <ul>
-                <% for (let blog of blogs) { %> 
-                    <div class="card">
-                        <li>Title: <%= blog.title %> </li>
-                        <li>Tags: <%= blog.tags %> 
-                        <br><br></li><button onclick="showContent('in_content<%= blog.title %>')" type="button" style="font-size:1em; cursor: pointer;background-color:darkgreen;color:yellowgreen;width:5em;height:3em;">See Blog</button>
-                            <div id= "in_content<%= blog.title %>" style="display: none; ">
-                                <p><%= blog.content %></p>
-                            </div>
-                        <br>
-                        <br>
-                        <br>
-                    </div> 
-                    <br>
-                    <br>
-                <% } %>
-        </ul>
-    <section class="btn-area">
-        <button class="btn"><a href="/">To login page</a></button>
-        <br>
-        <button class="btn"><a href="/users/<%= user._id %>/home">To home page</a> </button>
-    </section>
-    <script>
-        function showContent(id) {
-            let content = document.getElementById(id)
-            if (content.style.display === 'none')
-                content.style.display = 'block'
-            else    
-                content.style.display = 'none'
-        }
-    </script>
+    <div class="main-body">
+        <% for (let blog of blogs) { %> 
+            <div class="blog-tile">
+                <a href="/users/<%= user._id %>/home/My-Blogs/<%= blog._id %>"><p><%= blog.title %></p> </a>
+            </div> 
+            <br>
+        <% } %>
+        <!-- <div class="btn-area">
+            <button class="btn"><a href="/">To login page</a></button>
+            <br>
+            <button class="btn"><a href="/users/<%= user._id %>/home">To home page</a> </button>
+        </div> -->
+    </div>
+    <div class="footer">
+        <a href="https://github.com/AryamanMishra/Blog-App" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="mailto:aryaman.m09@gmail.com"><i class="fa fa-envelope"></i></a>
+    </div>
 </body>
 </html>
