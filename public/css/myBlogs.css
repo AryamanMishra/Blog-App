@@ -25,17 +25,35 @@ h1 {
 }
 .blog-tile:hover {
     cursor: pointer;
-    border: 1px solid gold;
-    box-shadow: 0px 0.5em 0.5em -0.4em gold;
+    box-shadow: 0.7em 0.6em 0.5em -0.4em gold;
     transform: translateY(-0.36em);
+}
+.blog-tile {
+    display: flex;
+    flex-direction: row;
+    border: 0.05em solid gold;
+}
+.blog-tile img {
+    padding: 20px;
 }
 .blog-tile p {
     font-size: 22px;
     color: gold;
+    padding-left: 20px;
 }
 .blog-tile a {
     text-decoration: none;
     color: gold;
+}
+
+.blog-tile #date {
+    position: relative;
+    left: 70%;
+    padding-top: 10px;
+    font-style: italic;
+    font-size: 16px;
+    color:gold;
+    text-align: right;
 }
 
 .footer  {

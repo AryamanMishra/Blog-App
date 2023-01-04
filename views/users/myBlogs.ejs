@@ -17,7 +17,9 @@
     <div class="main-body">
         <% for (let blog of blogs) { %> 
             <div class="blog-tile">
+                <img src="/images/favicon-32x32.png" alt="image" srcset="">
                 <a href="/users/<%= user._id %>/home/My-Blogs/<%= blog._id %>"><p><%= blog.title %></p> </a>
+                <p id="date">Published: <%= blog.date_created %> </p>
             </div> 
             <br>
         <% } %>

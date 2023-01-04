@@ -2,23 +2,26 @@ const mongoose = require('mongoose')
 
 
 const blogSchema = new mongoose.Schema({
-    user_id: {
-        type:String,
-        required:true
-    },
-    title: {
-        type:String,
-        required:true 
-    },
-    tags: {
-        type:String,
-        required:true
-    },
-    content: {
-        type:String,
-        required:true
-    }
-})
+  user_id: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  tags: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  date_created: {
+    type: String,
+  },
+});
 
 
 const Blog = new mongoose.model('Blog', blogSchema)

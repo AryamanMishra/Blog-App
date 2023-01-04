@@ -21,7 +21,14 @@ router.get('/users/:id/home/new', requireLogin, (req,res) => {
 /* POST request to create new Blog recived from newBlog.ejs */
 router.post('/users/:id/home/new', (req,res) => {
     const newBlog = new Blog(req.body)
-    console.log(req.body)
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
+    newBlog.date_created = currentDate;
+
     newBlog.save().then(() => { // Saving blogs in database
         console.log('saved')
         res.redirect(`/users/${req.body.user_id}/home/My-Blogs`)
