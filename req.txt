@@ -1,2 +1,2 @@
 add middleware folder
-host on atlas
+update blog content page
