@@ -4,43 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogAddiction - <%= user.name %></title>
+    <title>BlogApp - <%= user.name %></title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     
     <!-- styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/userHome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
     <%= messages %> 
-    <h1 class="title"><u>Welcome <%= user.name %></u></h1>
-    <center>    
-        <form action="/users/searchUser" method="POST">
+    <div>    
+        <form action="/users/searchUser" method="POST" class="search">
             <input type="text", id="name", name="name" placeholder="Search Users by name">
             <input type="hidden" value="<%= user._id %>" id="_id" name="id">
             <button type="submit" id="searchButton" style="cursor: pointer;">Search</button>
         </form>
-    </center>
-    <div class="btn-container">
+    </div>
+    <h1 class="title"><u>Welcome <%= user.name %></u></h1>
+    
+    <div class="user-interact">
         <button class="btn"><a href="/users/<%= user._id %>/home/My-blogs">My Blogs</a></button>
         <br>
         <button class="btn"><a href="/users/<%= user._id %>/home/new">Write a new Blog</a></button>
         <br>
-        <button class="btn"><a href="/">To login page</a></button>
-        <br>
         <button class="btn"><a href="/users/<%= user._id %>/profile ">My Profile</a></button>
         <br>
         <form action="/logout" method="POST" class="logoutform">
-            <button class="btn" style="text-decoration: none;color:white">Logout</button>
+            <button>Logout</button>
             <br>
         </form>
-        <div class="dropdown">
-            <button class="dropbtn">Contact Us</button>
-            <div class="dropdown-content">
-                <a href="mailto:aryamanmishra99@gmail.com" target="_blank">Mail</a>
-                <a href="https://www.linkedin.com/in/aryaman-mishra-576527190/" target="_blank">Linkedin</a>
-                <a href="https://github.com/AryamanMishra" target="_blank">GitHub</a>
-            </div>  
-        </div>
+    </div>
+    <div class="footer">
+        <a href="https://github.com/AryamanMishra/Blog-App" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="mailto:aryaman.m09@gmail.com"><i class="fa fa-envelope"></i></a>
     </div>
 </body>
 </html>

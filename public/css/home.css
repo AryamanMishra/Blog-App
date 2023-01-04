@@ -17,7 +17,9 @@ h2 {
     bottom: 60px;
     color: yellow;
 }
-
+input {
+    color:yellow;
+}
 #newuser {
     position: relative;
     top: 40px;
