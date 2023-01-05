@@ -1,126 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
-    text-transform: capitalize;
-    font-family: 'Mukta', sans-serif;
-    text-transform: none
+    font-family: 'Quicksand', sans-serif;
 }
 body {
-    background-color: #0d1117;
+    background-color: #050212;
 }
 .title {
-    color: #58A6FF;
+    color: yellow;
+    font-size: 2rem;
     text-align: center;
-    padding-top: 2rem;
+    padding-top: 1rem;
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.section-center {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+
+.main-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    gap: 5px;
 }
-p {
-    color: white;
-    text-align: center;
-    font-size: 1.1rem;
+
+
+.details {
+    padding: 20px;
+    margin-bottom: 40px;
+    border: 2px solid green;
 }
+.details p {
+    color: yellow;
+}
+
 .btn {
-    background-color: #238636;
-    color: white;
-    border: 2px solid white;
-    font-size: 1.15rem;
-    margin-top: 0.8rem;
-    width: 200px;
+    color: yellow;
+    font-size: 22px;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 50px;
+    background-color: #050212;
+        border: 1.5px rgb(50, 205, 60) solid;
 }
 .btn a {
-    color: white;
     text-decoration: none;
+    color: yellow;
 }
 .btn:hover {
-    border-color: #238636;
-    transition: all 1s ease-in;
-    background-color: white;
-    color: black;
-}
-.btn:hover a {
-    color: black;
-    transition: all 1s ease-in;
+    box-shadow: 0px 0.5em 0.5em -0.4em gold;
+    transform: translateY(-0.36em);
 }
 
-.btn-edit {
-    background-color: #238636;
-    color: white;
-    border: 2px solid white;
-    font-size: 1.15rem;
-    margin-top: 4rem;
-    width: 200px;
+
+.btn-delete  {
+    color: yellow;
+    font-size: 22px;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 50px;
+    background-color: #050212;
+        border: 1.5px rgb(50, 205, 60) solid;
 }
-
-
-
-.btn-edit a {
-    color: white;
-    text-decoration: none;
-}
-
-.btn-edit:hover {
-    border-color: #238636;
-    transition: all 1s ease-in;
-    background-color: white;
-    color: black;
-}
-
-
-.btn-edit:hover a {
-    color: black;
-    transition: all 1s ease-in;
-}
-
-.btn-delete {
-    background-color: #238636;
-    color: white;
-    border: 2px solid white;
-    font-size: 1.15rem;
-    margin-top: 7.2rem;
-    width: 200px;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%,-50%);
-}
-
-
-
-.btn-delete a {
-    color: white;
-    text-decoration: none;
-}
-
 .btn-delete:hover {
-    border-color: #238636;
-    transition: all 1s ease-in;
-    background-color: white;
-    color: black;
-}
-
-
-.btn-delete:hover a {
-    color: black;
-    transition: all 1s ease-in;
+    box-shadow: 0px 0.5em 0.5em -0.4em gold;
+    transform: translateY(-0.36em);
 }

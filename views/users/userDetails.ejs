@@ -11,20 +11,22 @@
     <link rel="stylesheet" href="/css/userDetails.css">
 </head>
 <body>
-    <h1 class="title"><u>User details</u></h1>
-    <section class="section-center">
-        <p>Name: <%= user.name %></p>
-        <p>Age: <%= user.age %></p>
-        <p>Email: <%= user.email %></p>
-        <p>Bio: <%= user.interests %></p>
-    </section>
-    <button class="btn"><a href="/users/<%= user._id%>/home">Back to home page</a></button>
-    <br>
-    <button class="btn-edit"><a href="/users/<%= user._id%>/profile/edit">Edit your Profile</a></button>
-    <br>
-    <form action="/delete?_method=DELETE" method="POST">
-        <button class="btn-delete">Delete your Profile</button>
-        <input type="hidden" value="<%=user._id%>" id="id" name="_id">
-    </form>
+    <h1 class="title">Your details</h1>
+    <div class="main-body">
+        <div class="details">
+            <p>Name: <%= user.name %></p>
+            <p>Age: <%= user.age %></p>
+            <p>Email: <%= user.email %></p>
+            <p>Bio: <%= user.interests %></p>
+        </div>
+        <button class="btn"><a href="/users/<%= user._id%>/home">Back to home page</a></button>
+        <br>
+        <button class="btn"><a href="/users/<%= user._id%>/profile/edit">Edit your Profile</a></button>
+        <br>
+        <form action="/delete?_method=DELETE" method="POST">
+            <button class="btn-delete">Delete your Profile</button>
+            <input type="hidden" value="<%=user._id%>" id="id" name="_id">
+        </form>
+    </div>
 </body>
 </html>
