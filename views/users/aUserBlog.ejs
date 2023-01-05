@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blog by <%= user.name %> </title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/aUserBlog.css">
 </head>
 <body>
-    wswswwswdwsw
-</body>
+    <div class="title">
+        <h2><%= blog.title  %> - <%= user.name  %>  </h2>
+    </div>
+    <div class="blog-body">
+        <div class="tags">
+            <p>Tags - <%= blog.tags  %></p>
+        </div>
+        <div class="blog">
+            <p><%= blog.content %> </p>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="https://github.com/AryamanMishra/Blog-App" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="mailto:aryaman.m09@gmail.com"><i class="fa fa-envelope"></i></a>
+    </div>
+</body> 
 </html>

@@ -15,6 +15,7 @@ router.get("/users/:id/home/My-Blogs/:bid", requireLogin, async (req, res) => {
     const bid = params.bid;
     const user = await User.findById(id);
     const blog = await Blog.findById(bid);
+    console.log(blog);
     res.render("users/aUserBlog", { user, blog });
   } catch (error) {
     console.log(error, "error in myblogs");

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+body {
+    background-color: #050212;
+}
+.title {
+    font-size: 22px;
+    color: yellow;
+    text-align: center;
+    border-bottom: 1px solid grey;
+}
+
+.blog-body {
+    display: flex;
+    flex-direction: column;
+    padding-left: 200px;
+    
+    margin-top: 10px;
+}
+.tags {
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+    padding-left: 20px;
+}
+.blog-body .tags p {
+    font-style: italic;
+    font-size: 18px;
+    color: yellow;
+}
+.blog {
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-left: 20px;
+}
+.blog p {
+    font-size: 22px;
+    color: yellow;
+}
+
+.footer  {
+    position: relative;
+    top: 95.7%;
+    margin-top: 32%;
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    border-top: 1px solid grey;
+}
+.footer i {
+    color: white;
+}
